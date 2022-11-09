@@ -42,6 +42,10 @@ describe('bowling score', ()=> {
                     expect(bowlingScore([[10, 2, 1]])).toEqual([16]);
                 });
 
+                it('three pins on one throw but with insufficient throw', ()=> {
+                    expect(bowlingScore([[10, 3]])).toEqual([16]);
+                });
+
             });
 
             describe('spare', ()=> {
