@@ -30,6 +30,10 @@ describe('bowling score', ()=> {
                     expect(bowlingScore([[10, 1, 0]])).toEqual([12]);
                 });
 
+                it('two pins', ()=> {
+                    expect(bowlingScore([[10, 2, 0]])).toEqual([14]);
+                });
+
             });
             describe('spare', ()=> {
 
