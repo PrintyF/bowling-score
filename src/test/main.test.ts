@@ -23,5 +23,21 @@ describe('bowling score', ()=> {
                 expect(bowlingScore([[1, 2, 3]])).toEqual([6]);
             });
         });
+
+        describe('special scores', ()=> {
+            describe('strike', ()=> {
+                it('one pin', ()=> {
+                    expect(bowlingScore([[10, 1, 0]])).toEqual([12]);
+                });
+
+            });
+            describe('spare', ()=> {
+
+            });
+
+        });
+
     });
+
+
 });
