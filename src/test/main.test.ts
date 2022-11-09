@@ -15,8 +15,12 @@ describe('bowling score', ()=> {
         });
 
         describe('two throw', ()=> {
-            it('one pin', ()=> {
+            it('three pins', ()=> {
                 expect(bowlingScore([[1, 2]])).toEqual([3]);
+            });
+
+            it('four pins', ()=> {
+                expect(bowlingScore([[1, 2, 3]])).toEqual([6]);
             });
         });
     });
