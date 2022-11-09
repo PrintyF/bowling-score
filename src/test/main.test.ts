@@ -2,7 +2,10 @@ import { bowlingScore } from '../main'
 
 describe('bowling score', ()=> {
 
-    it('should be dumb',  ()=> {
-        expect(bowlingScore()).toBeFalsy();
+    describe('one player', ()=> {
+
+        it('one throw', ()=> {
+            expect(bowlingScore([1])).toEqual([1]);
+        });
     });
 });
