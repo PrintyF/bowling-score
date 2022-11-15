@@ -1,16 +1,33 @@
 export function bowlingScore(scores: Array<Array<number>>): Array<number> {
-    let strikeIndex = scores[0].findIndex((el)=> el === 10)
-    let bonus = false;
+    let bonus = 1;
+    let frame = 0;
     return  [scores[0].reduce((a, b, index) => {
-        if (strikeIndex === index - 1) {
-            strikeIndex = scores[0].slice(strikeIndex + 1).findIndex((el)=> el === 10) + strikeIndex + 1
-            bonus = true;
-            return a + b * 2;
+        frame++;
+        if (scores[0][index - 1] === 10) {
+            frame++;
+            if (bonus < 3 && frame != 20 && frame != 22)
+                bonus++;
+        } else {
+            if (frame % 2 === 0) {
+                if (bonus > 1)
+                    bonus--;
+                if (isASpare(scores[0], index - 1))
+                    bonus = 2;
+            }
+            else {
+                if (bonus > 2)
+                    bonus--;
+            }
         }
-       else if (bonus) {
-            bonus = false;
-            return a + b * 2;
-        }
-        return a + b;
+        if (frame === 20 && bonus === 3)
+            bonus = 2;
+        if (frame === 22)
+            bonus = 1;
+        return a + b * bonus;
     })];
+}
+
+function isASpare(score: Array<number> , index: number): boolean {
+
+    return index > 0 && score[index] + score[index - 1] === 10;
 }

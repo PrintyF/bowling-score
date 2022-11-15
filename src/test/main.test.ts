@@ -35,7 +35,7 @@ describe('bowling score', ()=> {
                 });
 
                 it('one pin then two pins', ()=> {
-                    expect(bowlingScore([[1, 10, 2, 0]])).toEqual([15]);
+                    expect(bowlingScore([[1, 1, 10, 2, 0]])).toEqual([16]);
                 });
 
                 it('three pins on two throws after strike', ()=> {
@@ -56,16 +56,35 @@ describe('bowling score', ()=> {
                 it('two classic strikes', ()=> {
                     expect(bowlingScore([[10, 1, 2, 10, 1, 2]])).toEqual([32]);
                 });
+                it('two classic strikes in a row', ()=> {
+                    expect(bowlingScore([[10, 10, 2, 1]])).toEqual([38]);
+                });
+
+                it('full of strikes', ()=> {
+                    expect(bowlingScore([[10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]])).toEqual([300]);
+                });
 
             });
 
             describe('spare', ()=> {
+                it('one spare', ()=> {
+                    expect(bowlingScore([[5, 5, 2]])).toEqual([14]);
+                });
 
+                it('one other spare', ()=> {
+                    expect(bowlingScore([[1, 1, 5, 5, 2]])).toEqual([16]);
+                });
+
+                it('one fake spare', ()=> {
+                    expect(bowlingScore([[1, 5, 5, 1, 2]])).toEqual([14]);
+                });
+
+                it('two spares', ()=> {
+                    expect(bowlingScore([[5, 5, 3, 0, 6, 4, 2]])).toEqual([30]);
+                });
             });
 
         });
 
     });
-
-
 });
